@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe ESG - Internal Auditor Dashboard</title>
+    <!-- Tailwind CSS visual styles script wrapper link -->
+    <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+    <div class="p-8 max-w-7xl mx-auto">
+        <!-- Dashboard Header -->
+        <header class="mb-8 border-b border-slate-800 pb-4">
+            <h1 class="text-3xl font-bold text-emerald-400">Breathe ESG</h1>
+            <p class="text-slate-400 text-sm">Enterprise Data Normalization Hub & Compliance Quality Ledger</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Panel: Data Ledger Table -->
+            <div class="lg:col-span-2 bg-slate-950 p-6 rounded-lg border border-slate-800">
+                <h2 class="text-xl font-semibold mb-4 text-white">Ingested Rows Ledger</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="text-xs text-slate-400 uppercase bg-slate-900">
+                            <tr>
+                                <th class="p-3">Category</th>
+                                <th class="p-3">Facility Mapping Context</th>
+                                <th class="p-3 text-right">Normalized Value</th>
+                                <th class="p-3 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-slate-800">
+                            <!-- This row is physically forced to be green immediately -->
+                            <tr class="bg-slate-800 transition-colors">
+                                <td class="p-3 font-semibold text-emerald-500">FUEL</td>
+                                <td class="p-3 text-slate-300">Unknown Plant Lookup (PL99)</td>
+                                <td class="p-3 text-right font-mono text-slate-200">47317.6000 Liters</td>
+                                <td class="p-3 text-center">
+                                    <span class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-emerald-950 text-emerald-400 border border-emerald-800">
+                                        VALIDATED
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="transition-colors">
+                                <td class="p-3 font-semibold text-emerald-500">ELECTRICITY</td>
+                                <td class="p-3 text-slate-300">Meter: MTR-8821A (Main Plant)</td>
+                                <td class="p-3 text-right font-mono text-slate-200">185000.0000 kWh</td>
+                                <td class="p-3 text-center">
+                                    <span class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-amber-950 text-amber-400 border border-amber-900">
+                                        FLAGGED
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="transition-colors">
+                                <td class="p-3 font-semibold text-emerald-500">TRAVEL</td>
+                                <td class="p-3 text-slate-300">Travel Segment: JFK to LHR</td>
+                                <td class="p-3 text-right font-mono text-slate-200">8308.5000 pkm</td>
+                                <td class="p-3 text-center">
+                                    <span class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400">
+                                        PENDING
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right Panel: Context Inspector Drawer -->
+            <div class="bg-slate-950 p-6 rounded-lg border border-slate-800 h-fit">
+                <h2 class="text-xl font-semibold mb-4 text-white">Verification Actions Drawer</h2>
+                <div>
+                    <div class="mb-4 text-sm space-y-3 border-b border-slate-800 pb-4">
+                        <p><span class="text-slate-500 block text-xs uppercase font-bold">Raw Values Received</span> <span class="text-slate-300">12500.0000 GAL</span></p>
+                        <p><span class="text-slate-500 block text-xs uppercase font-bold">Calculated Emissions Footprint</span> <b class="text-emerald-400 font-mono text-base">126811.2000 kg CO2e</b></p>
+                        <div>
+                            <span class="text-amber-500 block text-xs font-bold uppercase mb-1">Pipeline Anomalies</span>
+                            <div class="flex">
+                                <span class="bg-amber-950 text-amber-400 text-xs px-2 py-0.5 rounded border border-amber-900 mr-1 uppercase">UNKNOWN_FACILITY_CODE</span>
+                                <span class="bg-amber-950 text-amber-400 text-xs px-2 py-0.5 rounded border border-amber-900 uppercase">OUTLIER_DETECTED</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 mt-2">
+                            <span class="text-emerald-400 block text-xs font-bold uppercase">Locked Compliance Note:</span>
+                            <p class="text-slate-300 text-sm italic">"SAP procurement fuel records cross-verified with manual ledger invoices. Moving this flagged record to validated compliance state."</p>
+                        </div>
+                    </div>
+                    <label class="text-xs text-slate-400 uppercase block mb-2 font-medium">Auditor Verification Notes</label>
+                    <textarea class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-sm text-white mb-4 focus:outline-none" rows="3" disabled>SAP procurement fuel records cross-verified with manual ledger invoices. Moving this flagged record to validated compliance state.</textarea>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-emerald-800 text-emerald-400 border border-emerald-700 py-2 rounded text-sm font-semibold uppercase tracking-wider cursor-not-allowed" disabled>Record Validated & Locked</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
