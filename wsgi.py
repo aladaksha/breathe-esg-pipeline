@@ -1,16 +1,14 @@
-"""
-WSGI config for esg_project project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/6.0/howto/deployment/wsgi/
-"""
-
 import os
-
+import sys
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'esg_project.settings')
+# Dynamic path discovery: Locate 'esg_project' dynamically and inject it into Python's path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+for root, dirs, files in os.walk(current_dir):
+    if 'esg_project' in dirs:
+        sys.path.insert(0, root)
+        sys.path.insert(0, os.path.join(root, 'esg_project'))
+        break
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'esg_project.settings')
 application = get_wsgi_application()
